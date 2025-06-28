@@ -24,7 +24,7 @@ create storage integration S3_int;
      CREATE OR REPLACE STAGE DEV_DB.PUBLIC.S3_STAGE
    FILE_FORMAT=CSV_FORMAT
    Storage_integration=S3_int
-   URL='s3://snowflakes3bucket8082/csv/'
+   URL='s3://snowflakes3bucket8082/csv/';
 
 
 create or replace TRANSIENT TABLE DEV_DB.Bronze.EMP (
