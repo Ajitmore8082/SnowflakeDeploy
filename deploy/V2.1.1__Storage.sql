@@ -1,4 +1,4 @@
-create or replace TRANSIENT TABLE hrdata.Bronze.EMP (
+create or replace TRANSIENT TABLE hrdata.EMP (
 	ID VARCHAR(16777216),
 	FIRST_NAME VARCHAR(16777216),
 	LAST_NAME VARCHAR(16777216),
