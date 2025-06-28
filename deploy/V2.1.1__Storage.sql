@@ -1,0 +1,38 @@
+
+use database DEV_DB;
+
+CREATE SCHEMA IF NOT EXISTS DEV_DB.Bronze;
+
+CREATE OR REPLACE FILE FORMAT CSV_FORMAT
+TYPE = CSV
+FIELD_DELIMITER = ','
+SKIP_HEADER=1
+FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+NULL_IF = ('NULL', 'null')
+ERROR_ON_COLUMN_COUNT_MISMATCH=FALSE;
+
+create storage integration S3_int;
+    type = external_stage
+    storage_provider = s3
+    storage_aws_role_arn = 'arn:aws:iam::060795923566:role/SF_Role'
+    enabled = true
+    storage_allowed_locations = ( 's3://snowflakes3bucket8082/csv/' )
+    -- storage_blocked_locations = ( 's3://<location1>', 's3://<location2>' )
+    -- comment = '<comment>'
+    ;
+
+     CREATE OR REPLACE STAGE S3_STAGE
+   FILE_FORMAT=CSV_FORMAT
+   Storage_integration=S3_int
+   URL='s3://snowflakes3bucket8082/csv/';
+
+
+create or replace TRANSIENT TABLE Bronze.EMP (
+	ID VARCHAR(16777216),
+	FIRST_NAME VARCHAR(16777216),
+	LAST_NAME VARCHAR(16777216),
+	EMAIL VARCHAR(16777216),
+	LOCATION VARCHAR(16777216),
+	DEPARTMENT VARCHAR(16777216),
+    PRIMARY KEY(id)
+);
