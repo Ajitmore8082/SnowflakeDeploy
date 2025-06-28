@@ -1,4 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS EMP_Dep.hrdata;
+CREATE SCHEMA IF NOT EXISTS EMP1.hrdata;
 
 -- Create Tables
 CREATE TABLE IF NOT EXISTS hrdata.employees
