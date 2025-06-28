@@ -3,7 +3,7 @@ use database DEV_DB;
 
 CREATE SCHEMA IF NOT EXISTS DEV_DB.Bronze;
 
-CREATE OR REPLACE FILE FORMAT CSV_FORMAT
+CREATE OR REPLACE FILE FORMAT DEV_DB.public.CSV_FORMAT
 TYPE = CSV
 FIELD_DELIMITER = ','
 SKIP_HEADER=1
@@ -21,13 +21,13 @@ create storage integration S3_int;
     -- comment = '<comment>'
     ;
 
-     CREATE OR REPLACE STAGE S3_STAGE
+     CREATE OR REPLACE STAGE DEV_DB.PUBLIC.S3_STAGE
    FILE_FORMAT=CSV_FORMAT
    Storage_integration=S3_int
-   URL='s3://snowflakes3bucket8082/csv/';
+   URL='s3://snowflakes3bucket8082/csv/'
 
 
-create or replace TRANSIENT TABLE Bronze.EMP (
+create or replace TRANSIENT TABLE DEV_DB.Bronze.EMP (
 	ID VARCHAR(16777216),
 	FIRST_NAME VARCHAR(16777216),
 	LAST_NAME VARCHAR(16777216),
