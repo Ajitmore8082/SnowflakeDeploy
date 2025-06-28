@@ -1,3 +1,5 @@
+use database DEV_DB;
+
 CREATE SCHEMA IF NOT EXISTS DEV_DB.Bronze;
 CREATE SCHEMA IF NOT EXISTS DEV_DB.file_format1;
 
